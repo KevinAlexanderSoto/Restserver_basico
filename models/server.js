@@ -25,7 +25,7 @@ class Server {
 
   routs() {
     
-    //utiliazar las rutas o endpoints que estan en tro archivo 
+    //utiliazar las rutas o endpoints que estan en otro archivo 
     this.app.use(this.usuariosRoutPath,require('../routes/user'))
   }
 
