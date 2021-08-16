@@ -8,7 +8,7 @@ class Server {
     this.app = express();
     this.port = process.env.PORT; //crear variable de entorno para el puerto
     this.usuariosRoutPath = "/api/usuarios"; // ruta de consulta de la api
-
+    this.authRoutPath = "/api/auth"
     //conectar a la base de datos
 
     this.conectarDB();
