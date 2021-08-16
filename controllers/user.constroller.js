@@ -6,18 +6,18 @@ const bcrypt = require("bcryptjs"); //Encriptar contraseña
 const usuariosGET = async (req, res = response) => {// recuperan datos
   
   /* const { nombre = "anonymous", cel = undefined } = req.query; //recibe parametros del query */
- 
 
-  const { limite = 5, desde = 0 } = req.query;
-    const query = { estado: true };
+  const { limit =5, desde= 0  } = req.query;
 
-    const [ total, usuarios ] = await Promise.all([
+    const query = { state: true };
+
+    const [ total , usuarios ] = await Promise.all([
       ////////////////SABER CUANTOS REGISTROS TENGO //////////////////
         Usuario.countDocuments(query),
       /////////////// PAGINACION //////////////////////////
         Usuario.find(query)// trae todos los usuarios
             .skip( Number( desde ) )// se salta los x primeros registros 
-            .limit(Number( limite ))//para obtener los x primeros registros 
+            .limit(Number( limit ))//para obtener los x primeros registros 
     ]);
   
   res.send({
@@ -25,6 +25,7 @@ const usuariosGET = async (req, res = response) => {// recuperan datos
     usuarios
   });
 };
+
 const usuariosPUT = async (req, res = response) => {//para actualizar
   
   const { id } = req.params; // los que se mandan por debajo en URL
